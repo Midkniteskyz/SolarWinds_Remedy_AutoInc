@@ -24,6 +24,8 @@ Execute a script on alerts that will create Remedy Incidents, populating the inc
 ### Installation
 ### Configuration
 
+![Execution Diagram](Images/execution_description.jpg "Execution Visual")
+
 ## Usage
 Instructions on how to use the project once it is set up.
 
