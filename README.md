@@ -17,20 +17,46 @@ Execute a script on alerts that will create Remedy Incidents, populating the inc
 - Catch alerts that clear quickly
 - Facilitate tabular navigation for improved user experience
 
-## Getting Started
-**This is written from a SolarWinds / PowerShell Admin, I am not a Remedy Admin and highly suggest you consult your local Remedy Admin for clarity on that sides configuration**
+## Project status
+If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
 
-### Set Up
-### Installation
-### Configuration
+## Getting started
+**This is written from a SolarWinds / PowerShell Admin, I am not a Remedy Admin and highly suggest you consult the Remedy Admins for clarity on that sides configuration**
 
-![Execution Diagram](Images/execution_description.jpg "Execution Visual")
+## Visuals
+
+![Execution Diagram](readme_assets/execution_build.jpg "Execution Visual")
+
+![WorkFlow Diagram](readme_assets/flowchartRemedyAPI.jpg "WorkFlow Visual")
+
+![SolarWinds Results](readme_assets/swresults.jpg "SolarWinds Result")
+
+![Remedy Results](readme_assets/remedyresult.jpg "Remedy Result")
+
+## Installation
+
+**SWIS PowerShell Module is required to be install on the SolarWinds server in order to work**
 
 ## Usage
-Instructions on how to use the project once it is set up.
+The basic command to execute the script
+```powershell
+C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -ExecutionPolicy Unrestricted -File "C:\RemedyAPI\SolarWindsConnector.ps1" -RemedyCustomer "${N=SwisEntity;M=CustomProperties.Remedy_Customer}" -RemedySummary "${N=Alerting;M=AlertDescription}" -RemedyNotes "${N=Alerting;M=AlertMessage}" -SW_Severity "${N=Alerting;M=Severity}" -RemedyTenant "${N=SwisEntity;M=CustomProperties.Remedy_Tenant}" -RemedyEnvironment "${N=SwisEntity;M=CustomProperties.Remedy_Environment}" -RemedyCompany "${N=SwisEntity;M=CustomProperties.Remedy_Company}" -RemedyOrganization "${N=SwisEntity;M=CustomProperties.Remedy_Organization}" -RemedyAssignedGroup "${N=SwisEntity;M=CustomProperties.Remedy_Assigned_Group}" -SW_AlertID "${N=Alerting;M=AlertObjectID}" -SW_AlertURL "${N=Alerting;M=AlertDetailsUrl}" -SW_ApplicationKBA "${N=SwisEntity;M=Integrations.Application.CustomProperties.Application_Remedy_KBA}"
+```
+
+### Trigger Generator
+The execution command is very long and it's very easy to make a mistake in typing. To help faciliate the accuracy and customization of the command, visit the [SharePoint Trigger Generator](https://ustsa.sharepoint.com/teams/TSA-IT-TSD-STAMPSOLARWINDS/Lists/Trigger%20Generator/AllItems.aspx). 
+
+## Support
+
+## Roadmap
+Add incident update after the alert resets
 
 ## Contributing
-Instructions on how to contribute to the project, such as how to submit issues and pull requests.
+Any and all contribution is appreciated
+
+## Authors and acknowledgment
+Stephen Ferrari for starting this idea
+Ryan Woolsey for the powershell contribution
 
 ## Resources
 Links to any additional resources related to the project.
