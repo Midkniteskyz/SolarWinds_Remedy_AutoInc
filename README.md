@@ -62,3 +62,5 @@ Links to any additional resources related to the project.
 [Remedy AR System - REST API, how to use it with Powershell's Invoke-RestMethod Commands](https://community.bmc.com/s/article/Remedy-AR-System-REST-API-how-to-use-it-with-Powershell-s-Invoke-RestMethod-Commands)
 
 [Overview of the Remedy REST API](https://docs.bmc.com/docs/ars2002/overview-of-the-rest-api-909638130.html)
+
+[Create a Remedy Incident](http://depressedpress.com/2016/05/20/create-a-link-to-a-remedy-ticket/)
