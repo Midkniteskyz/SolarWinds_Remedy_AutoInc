@@ -1,7 +1,5 @@
-# SolarWinds_Remedy_AutoInc
+# SolarWinds Remedy Auto Incident Generator
 Use SolarWinds alerts to automatically generate Remedy Incidents
-
-## SolarWinds Remedy Auto Incident Generator
 
 ### Problem
 The Enterprise Operations Support Center monitored SolarWinds for alerts within the environment. 
@@ -18,7 +16,7 @@ Execute a script on alerts that will create Remedy Incidents, populating the inc
 - Facilitate tabular navigation for improved user experience
 
 ## Project status
-If you have run out of energy or time for your project, put a note at the top of the README saying that development has slowed down or stopped completely. Someone may choose to fork your project or volunteer to step in as a maintainer or owner, allowing your project to keep going. You can also make an explicit request for maintainers.
+Working
 
 ## Getting started
 **This is written from a SolarWinds / PowerShell Admin, I am not a Remedy Admin and highly suggest you consult the Remedy Admins for clarity on that sides configuration**
@@ -44,7 +42,7 @@ C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -ExecutionPoli
 ```
 
 ### Trigger Generator
-The execution command is very long and it's very easy to make a mistake in typing. To help faciliate the accuracy and customization of the command, visit the [SharePoint Trigger Generator](https://ustsa.sharepoint.com/teams/TSA-IT-TSD-STAMPSOLARWINDS/Lists/Trigger%20Generator/AllItems.aspx). 
+The execution command is very long and it's very easy to make a mistake in typing. 
 
 ## Support
 
