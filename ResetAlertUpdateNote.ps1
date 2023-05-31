@@ -22,6 +22,21 @@ Param(
 
 # C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoLogo -ExecutionPolicy Unrestricted -File 'C:\RemedyAPI\ResetAlertUpdateNote.ps1' -AlertNote "${N=Alerting;M=Notes}" -IncidentMessage "Alert has reset in SolarWinds."
 
+#region Execution & Logging Configuration
+
+Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope CurrentUser -Force
+
+$uid = [guid]::NewGuid().ToString("N")
+$date = Get-Date -Format "yyyyMMdd-HHmmss"
+$filename = "${date}~${uid}.log"
+$LogsDir = "C:\RemedyAPI\Logs\ResetUpdateAlertNote"
+$LogDirSuccess = "$LogsDir\Success"
+$LogDirFailed = "$LogsDir\Failed"
+
+Start-Transcript -Path "C:\RemedyAPI\Logs\ResetUpdateAlertNote\$filename.txt" -NoClobber
+
+#endregion Execution  &Logging Configuration
+
 #region Test Remedy Connection
 
 # Test connection to the CS Remedy Server. Change to AJ if unavailable.
@@ -71,13 +86,13 @@ function Test-ServerConnection {
     # Define the servers
     if ($Test) {
         $servers = @(
-            'https://TestServer1.org:8443'
+            'https://dev.local:8443'
         )
         $serverType = 'test'
     }
     else {
         $servers = @(
-            'https://ProdServer1.org:443'
+            'https://:443'          
         )
         $serverType = 'production'
     }
@@ -150,11 +165,15 @@ Add-WorkNoteToIncident -incidentNumber $IncidentNumber -message $message
         try {
             # Use this cred to running from SolarWinds
             $CredPath = "C:\RemedyAPI\Credentials_nt authority~system.xml"
+
+            # Other creds that can be used if logged in through CAPAM
+            # $CredPath = "C:\RemedyAPI\Credentials_.xml"
             
             $Credential = Import-Clixml -Path $CredPath
             $Username = $Credential.UserName
             $Password = $Credential.GetNetworkCredential().Password.ToString()
             Write-Host "Credentials successfully retrieved from $CredPath"
+
         }
         catch {
             Write-Host "Unable to grab credentials from $CredPath"      
@@ -213,11 +232,18 @@ function Get-IncidentNumber {
 <#
 $TestNote = @"
 I am a test note
+
 Incident Number: INC000002099110
-ack
+ack OSC
+
 "@
 #>
-# $message = "Adding the incident number parser. Current test note is:`n$TestNote"
+
+#$message = "Adding the incident number parser. Current test note is:`n$TestNote"
 
 $IncidentNumber = Get-IncidentNumber $AlertNote
 Add-WorkNoteToIncident -incidentNumber $IncidentNumber -message $IncidentMessage
+
+Stop-Transcript
+
+#C:\RemedyAPI\ResetAlertUpdateNote.ps1 -AlertNote "Incident Number: INC000002103823" -IncidentMessage "Alert has reset in SolarWinds."
