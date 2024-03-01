@@ -17,7 +17,7 @@ function Get-Incident {
 
         # Creds for connecting to the Jetty Server
         $UserName = "SolarWinds"
-        $Password = 'Omn1$bus'
+        $Password = 'password'
 
         # Connect to the Jetty Server & get a token
         $JettyToken = Invoke-RestMethod -Uri "$RemedyHost/api/jwt/login" -Method 'POST' -ContentType 'application/x-www-form-urlencoded' -Body "username=$UserName&password=$Password"
